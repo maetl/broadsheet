@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Aotearoa Hip Hop</title>
+</head>
+<body>
+	<h1>Stream</h1>
+	
+	{% for entry in entries %}
+	
+		<div class="entry">
+			<h3>{{ entry.title }}</h3>
+			<div class="content">
+				{{ entry.content }}
+			</div>
+		</div>
+		<hr>
+	
+	{% endfor %}
+	
+</body>
+</html>
