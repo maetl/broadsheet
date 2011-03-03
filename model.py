@@ -1,28 +1,26 @@
+#!/usr/bin/env python
+# == Part of More Short Links ==
+# 
+# Copyright Mark Rickerby <http://maetl.net>, 2011
+#
+# # Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 from google.appengine.ext import db
-from google.appengine.api import urlfetch
-from xml.dom import minidom
-from django.utils import simplejson as json
-
-#dom = minidom.parseString('<eg>example text</eg>')
 
 class Link(db.Model):
-    title = db.StringProperty()
-    url = db.StringProperty()
-    summary = db.StringProperty()
-    published_at = db.DateTimeProperty()
-
-class WaxyFeed():
+    title           = db.StringProperty()
+    url             = db.StringProperty()
+    summary         = db.TextProperty()
+    published_at    = db.DateTimeProperty()
+    weight          = db.IntegerProperty()
     
-    def fetch(self):
-        url = "http://waxy.org/links/index.xml"
-        result = urlfetch.fetch(url)
-        if result.status_code == 200:
-            return minidom.parseString(result.content)
-            
-class FourShortLinksFeed():
-    
-    def fetch(self):
-        url = "http://pipes.yahoo.com/pipes/pipe.run?_id=b5896405bdb116feac4ed791f41498ee&_render=json"
-        result = urlfetch.fetch(url)
-        if result.status_code == 200:
-            return json.loads(result.content)

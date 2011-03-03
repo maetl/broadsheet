@@ -1,8 +1,9 @@
 #!/usr/bin/env python
+# == Part of More Short Links ==
+# 
+# Copyright Mark Rickerby <http://maetl.net>, 2011
 #
-# Copyright 2007 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
+# # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
@@ -16,8 +17,8 @@
 #
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
-
 from model import *
+from aggregator import *
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
@@ -25,18 +26,11 @@ class MainHandler(webapp.RequestHandler):
         
 class TaskHandler(webapp.RequestHandler):
     def get(self):
-        feed = WaxyFeed().fetch()
-        items = feed.getElementsByTagName('item')
-        for item in items:
-            self.response.out.write(item.getElementsByTagName('title')[0].childNodes[0].data + "<br>")
-        
-        feed = FourShortLinksFeed().fetch()
-        for item in feed['value']['items']:
-            self.response.out.write(item['title'] + "<br>")
-        
-        
+        aggregator = Aggregator()
+        aggregator.scan_sources()
 
-
+        
+        
 def main():
     application = webapp.WSGIApplication([('/', MainHandler), ('/tasks/scan', TaskHandler)],
                                          debug=True)
