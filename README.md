@@ -1,9 +1,9 @@
 More Short Links
 ================
 
-Mostly, I wanted a clean, fun interface for checking the latest from my favorite short-form linkblogs. I got tired of dredging through the whack-a-mole dreck in RSS readers just to get at an interesting flow of links.
+Mostly, I wanted a clean, fun interface for checking the latest from my favorite short-form linkblogs. I got tired of sloughing through the whack-a-mole dreck in RSS readers just to get at an interesting flow of links. I wanted an interface
 
-A little like Giles Bowkett’s ‘Hacker Newspaper’ and Andy Baio’s ‘The Daily: Indexed’; this was an itch, and I scratched it.
+A little like Giles Bowkett’s ‘Hacker Newspaper’ and IA’s TPUTH (http://www.tputh.com); this was an itch, and I scratched it. I’m in complete agreement with Giles about the sub-optimal design of most news aggregators. They seem to ignore hundreds of years of typographic experience in hierarchical information display. Recent design trends suggest a move towards more curated and readable experiences, and if the success of Instapaper is anything to go by, people are very much in favor of this.
 
 My initial prototype ran on Heroku, but I demolished that because I was too tightarse to pay for the hourly cron.
 
