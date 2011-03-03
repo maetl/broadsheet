@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Aotearoa Hip Hop</title>
+	<title>More Short Links</title>
 </head>
 <body>
-	<h1>Stream</h1>
+	<h1>More Short Links</h1>
 	
-	{% for entry in entries %}
+	{% for link in links %}
 	
 		<div class="entry">
-			<h3>{{ entry.title }}</h3>
-			<div class="content">
-				{{ entry.content }}
+			<h3><a href="{{ link.url }}">{{ link.title }}</a></h3>
+			<div class="summary">
+				{{ link.summary }}
 			</div>
 		</div>
-		<hr>
 	
 	{% endfor %}
 	

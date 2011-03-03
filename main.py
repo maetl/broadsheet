@@ -15,14 +15,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import os
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
+from google.appengine.ext.webapp import template
 from model import *
 from aggregator import *
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
-        self.response.out.write('Hello world!')
+        values = {
+            'links': Link.all()
+        }
+        path = os.path.join(os.path.dirname(__file__), 'templates', 'index.html')
+        self.response.out.write(template.render(path, values))
         
 class TaskHandler(webapp.RequestHandler):
     def get(self):
