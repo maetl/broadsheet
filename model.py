@@ -20,7 +20,21 @@ from google.appengine.ext import db
 
 class Link(db.Model):
     title           = db.StringProperty()
-    url             = db.LinkProperty()
+    href            = db.LinkProperty()
     summary         = db.TextProperty()
     updated         = db.DateTimeProperty()
     weight          = db.IntegerProperty()
+    tweets          = db.IntegerProperty()
+    mentions        = db.IntegerProperty()
+    source          = db.StringProperty()
+    source_href     = db.LinkProperty()
+    
+    def col(self):
+        if self.weight < 30:
+            return 'col-1'
+        else:
+            return 'col-2'
+    
+    @classmethod
+    def headlines(self):
+        return self.all().order('-updated').fetch(32)
