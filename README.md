@@ -12,7 +12,7 @@ You’re mostly interested in the links
 
 My initial prototype ran on Heroku, but I demolished that because I was too tightarse to pay for the hourly cron. It’s now running on Google App Engine which has a wonderfully generous quota of URL fetch requests per day.
 
-See a live version of the app: [not yet]
+See a live version of the app: http://moreshortlinks.appspot.com/
 
 You’re mostly interested in how you can make your own newspaper
 ---------------------------------------------------------------
