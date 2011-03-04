@@ -78,7 +78,7 @@ class Aggregator():
         for item in feed.entries:
             obj = {}
             obj['title'] = item.title
-            obj['url'] = item.link
+            obj['href'] = item.link
             obj['summary'] = item.summary
             obj['updated'] = datetime.datetime.utcfromtimestamp(calendar.timegm(item.updated_parsed))
             items.append(obj)
@@ -89,11 +89,11 @@ class Aggregator():
         for source in sources['sources']:
             items = self.fetch_feed(source['feed'])
             for item in items:
-                link = db.GqlQuery("SELECT * FROM Link WHERE href = :1", item['url']).get()
+                link = db.GqlQuery("SELECT * FROM Link WHERE href = :1", item['href']).get()
                 if not link:
                     link = Link()
                     link.title = item['title']
-                    link.url = item['url']
+                    link.href = item['href']
                     link.summary = item['summary']
                     link.updated = item['updated']
                     link.weight = source['influence']

@@ -1,7 +1,7 @@
 Broadsheet - an automated personal newspaper 
 ============================================
 
-Broadsheet is the result of idle tinkering . I got tired of sloughing through the whack-a-mole dreck in RSS readers just to get at recent posts from my favorite tech/culture linkblogs. I wanted an interface driven by typographic heirarchy rather than an unread items count — something fun to read that can morph and adapt to changing content.
+Broadsheet is the result of idle tinkering. I got tired of sloughing through the whack-a-mole dreck in RSS readers just to get at recent posts from my favorite tech/culture linkblogs. I wanted an interface driven by typographic heirarchy rather than an unread items count — something fun to read that can morph and adapt to a changing flow of content.
 
 A little like Giles Bowkett’s ‘Hacker Newspaper’ and IA’s TPUTH (http://www.tputh.com), this was an itch, and I scratched it.
 
@@ -17,13 +17,13 @@ See a live version of the app: [not yet]
 You’re mostly interested in how you can make your own newspaper
 ---------------------------------------------------------------
 
-First, you’ll need a way to upload apps to Google App Engine. Still with me? Great.
+First, you’ll need a way to upload Python appliations to Google App Engine. Still with me? Great.
 
 Clone this repository into a local folder and use "Add Existing Application" in the AppEngineLauncher to set it up on your localhost.
 
-Edit the following line in the app.yaml to register a unique App Engine site:
+Edit the following line in the <code>app.yaml</code> to register a unique App Engine site:
 
-<pre>application: your-app-name</pre>
+<pre>application: broadsheet</pre>
 
 To configure the list of sources, you’ll want to edit the <code>sources.yaml</code> config:
 
@@ -39,16 +39,18 @@ The influence factor is used as a base for calculating the weighting of links. L
 
 This influence score is assigned to the links by default when they are first imported. The weighting is updated based on popularity and cross references from other sources. This is pretty much a draft, and could be greatly improved.
 
-To change the way that headlines are selected, you need to edit the GQL query in <code>Link.headlines()</code>. For example, you might want to change the list order or number of items displayed:
+To change the way that the links are selected, you need to edit the GQL query in <code>Link.headlines()</code>. For example, you might want to change the default list order or number of items displayed:
 
 <pre>@classmethod
 def headlines(self):
     return self.all().order('-updated').fetch(32)</pre>
 
-Once you have tested the app on your localhost, you can upload it to the live servers using the "Deploy" button in the AppEngineLauncher.
+Once you have tested the app on your localhost, you can upload it to the live servers using the “Deploy” button in the AppEngineLauncher.
 
 You’re intrigued by this and are wondering how to customize the layout
 ----------------------------------------------------------------------
+
+The single HTML template that does everything is in <code>/templates/index.html</code>.
 
 All Stylesheets and Javascript assets are contained in the <code>/assets</code> folder. Stylesheets are built using the Sass tool which you will need to install via Rubygems:
 
@@ -60,7 +62,8 @@ Link to the new theme by renaming the following line in <code>/assets/css/broads
 
 <pre>@import "themes/light.theme"</pre>
 
-Then compile the assets into the master CSS file using Sass:
+Then compile the assets into the master CSS file using Sass (you’ll probably want to use the <code>-t</code> flag to compress whitespace and remove other general cruft):
 
-<pre>sass assets/css/broadsheet.scss assets/broadsheet.css</pre>
+<pre>sass -t compressed assets/css/broadsheet.scss assets/broadsheet.css</pre>
 
+Kapow! You now have your very own personalized newspaper. Enjoy.

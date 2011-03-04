@@ -8,3 +8,4 @@ handlers:
   static_dir: assets
 - url: .*
   script: main.py
+  
