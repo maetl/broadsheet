@@ -1,0 +1,7 @@
+cron:
+- description: scan sources for new links
+  url: /tasks/scan
+  schedule: every 25 minutes
+- description: flush expired links
+  url: /tasks/flush
+  schedule: every monday 09:00
