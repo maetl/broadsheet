@@ -11,6 +11,11 @@
     visibility:hidden;
 }
 
+.content {
+    margin-top:18px;
+    margin-bottom:18px;
+}
+
 .col {
     float:left;
     margin-left:9px;
@@ -19,13 +24,11 @@
 }
 
 .col-4 {
-    width:82.5em;
-    margin-left:0 !important;
+    width:990px;
 }
 
 .col-3 {
-    border-top:2px solid black;
-    width:61.5em;
+    
 }
 
 .col-2 {
@@ -33,5 +36,5 @@
 }
 
 .col-1 {
-    width:216px;
+    width:232px;
 }

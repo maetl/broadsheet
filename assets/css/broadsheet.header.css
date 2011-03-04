@@ -1,6 +1,32 @@
 .header {
+    width:100%;
     text-align:center;
+    border-bottom:3px solid #eee;
     padding:18px;
-    border-bottom:3px solid black;
     margin-bottom:18px;
+}
+
+.header h1 {
+    line-height:56px;
+}
+
+body {
+    background-color:#eee;
+    color:#432C35;
+}
+
+.layout {
+    background-color:#fff;
+}
+
+a {
+    color:#EC2A04;
+}
+
+a:hover {
+    color:#50202D;
+}
+
+a:visited {
+    color:#861B25;
 }

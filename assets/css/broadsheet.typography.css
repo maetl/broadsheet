@@ -1,5 +1,5 @@
 body {
-    font-family:"Merriweather",Georgia,serif;
+    font-family:"Arvo",Georgia,serif;
     font-size:12px;
     line-height:18px;
 }
@@ -9,22 +9,24 @@ a {
 }
 
 h1 {
-    font-size:36px;
+    font-size:56px;
+    font-family:Georgia,serif;
+    letter-spacing:-2px;
 }
 
-h1 { 
-  font-size:32px; 
-  line-height:36px;
+.col-1 h2 {
+    font-size:14px;
+    line-height:18px;
 }
 
-h2 { 
+.col-2 h2 { 
     font-size:24px; 
     line-height:36px;
 }
 
-h3 {
-    font-size: 18px; 
-    line-height:18px;
+.col-3 h2, .col-4 h2 {
+    font-size:36px;
+    line-height:48px;
 }
 
 em,i {
