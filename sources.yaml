@@ -1,7 +1,10 @@
 sources:
-- name: Four Short Links (Nat Torkington)
+- name: gnat
   url: http://pipes.yahoo.com/pipes/pipe.run?_id=b5896405bdb116feac4ed791f41498ee&_render=json
   format: JSON
-- name: Waxy Links (Andy Baio)
+- name: Waxy
   url: http://waxy.org/links/index.xml
+  format: RSS
+- name: tecznotes
+  url: http://mike.teczno.com/snippets/xml.php
   format: RSS
