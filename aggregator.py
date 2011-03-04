@@ -17,31 +17,35 @@
 # limitations under the License.
 #
 import yaml
+import feedparser
+import datetime
+import calendar
 from google.appengine.ext import db
 from google.appengine.api import urlfetch
 from xml.dom import minidom
-from django.utils import simplejson as json
 from model import *
+
+class UniversalFeed():
+    """
+    Collects links using the Universal Feed Parser
+    """
     
-class RSS2Feed():
-    
-    def fetch(self, url):
-        result = urlfetch.fetch(url)
-        if result.status_code == 200:
-            return minidom.parseString(result.content)
-            
     def collect(self, url):
-        feed = self.fetch(url)
+        feed = feedparser.parse(url)
         items = []
-        for item in feed.getElementsByTagName('item'):
+        for item in feed.entries:
             obj = {}
-            obj['title'] = item.getElementsByTagName('title')[0].childNodes[0].data
-            obj['url']  = item.getElementsByTagName('link')[0].childNodes[0].data
-            obj['summary'] = item.getElementsByTagName('description')[0].childNodes[0].data
+            obj['title'] = item.title
+            obj['url'] = item.link
+            obj['summary'] = item.summary
+            obj['updated'] = datetime.datetime.utcfromtimestamp(calendar.timegm(item.updated_parsed))
             items.append(obj)
         return items
 
 class JSONFeed():
+    """
+    Collects links from Yahoo Pipes JSON feed
+    """
     
     def fetch(self, url):
         result = urlfetch.fetch(url)
@@ -56,29 +60,35 @@ class JSONFeed():
             obj['title'] = item['title']
             obj['url']   = item['link']
             obj['summary'] = item['content']
+            obj['updated'] = datetime.datetime.strptime(item['published'], '%Y-%d-%mT%H:%M:%SZ')
             items.append(obj)
         return items
 
-
 class Aggregator():
-    "Aggregates links from feed sources and updates headline weightings for existing links."
-    
-    parsers = {
-        'RSS':  'RSS2Feed',
-        'JSON': 'JSONFeed'
-    }
+    """
+    Aggregates links from feed sources and updates headline weightings for existing links.
+    """
     
     def get_sources(self, filename='sources.yaml'):
         return yaml.load(open(filename, 'r').read())
         
+    def fetch_feed(self, url):
+        feed = feedparser.parse(url)
+        items = []
+        for item in feed.entries:
+            obj = {}
+            obj['title'] = item.title
+            obj['url'] = item.link
+            obj['summary'] = item.summary
+            obj['updated'] = datetime.datetime.utcfromtimestamp(calendar.timegm(item.updated_parsed))
+            items.append(obj)
+        return items
+        
     def scan_sources(self):
         sources = self.get_sources()
         for source in sources['sources']:
-            if source['format'] == 'JSON':
-                parser = JSONFeed()
-            else:
-                parser = RSS2Feed()
-            self.update_source(parser.collect(source['url']))
+            items = self.fetch_feed(source['url'])
+            self.update_source(items)
     
     def update_source(self, items):
         for item in items:
@@ -88,5 +98,6 @@ class Aggregator():
                 link.title = item['title']
                 link.url = item['url']
                 link.summary = item['summary']
+                link.updated = item['updated']
                 link.put()
             

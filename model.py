@@ -22,6 +22,5 @@ class Link(db.Model):
     title           = db.StringProperty()
     url             = db.LinkProperty()
     summary         = db.TextProperty()
-    published_at    = db.DateTimeProperty()
+    updated         = db.DateTimeProperty()
     weight          = db.IntegerProperty()
-    
