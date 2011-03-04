@@ -1,0 +1,32 @@
+body {
+    font-family:"Merriweather",Georgia,serif;
+    font-size:12px;
+    line-height:18px;
+}
+
+a {
+    text-decoration:none;
+}
+
+h1 {
+    font-size:36px;
+}
+
+h1 { 
+  font-size:32px; 
+  line-height:36px;
+}
+
+h2 { 
+    font-size:24px; 
+    line-height:36px;
+}
+
+h3 {
+    font-size: 18px; 
+    line-height:18px;
+}
+
+em,i {
+    font-style:italic;
+}

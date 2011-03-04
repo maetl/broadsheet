@@ -1,0 +1,37 @@
+.layout {
+    margin:0 auto;
+    width:1008px;
+}
+
+.layout:after {
+    content:".";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+}
+
+.col {
+    float:left;
+    margin-left:9px;
+    margin-right:9px;
+    margin-bottom:18px;
+}
+
+.col-4 {
+    width:82.5em;
+    margin-left:0 !important;
+}
+
+.col-3 {
+    border-top:2px solid black;
+    width:61.5em;
+}
+
+.col-2 {
+    width:477px;
+}
+
+.col-1 {
+    width:216px;
+}
