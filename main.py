@@ -23,24 +23,42 @@ from google.appengine.ext.webapp import template
 from model import *
 from aggregator import *
 
-class MainHandler(webapp.RequestHandler):
+class IndexPage(webapp.RequestHandler):
+    """
+    Displays the HTML newspaper index
+    """
+    
     def get(self):
         values = {
-            'links': Link.all()
+            'links': Link.headlines()
         }
         path = os.path.join(os.path.dirname(__file__), 'templates', 'index.html')
         self.response.out.write(template.render(path, values))
         
-class TaskHandler(webapp.RequestHandler):
+class ScanSourcesTask(webapp.RequestHandler):
+    """
+    Periodically scans sources and adds new links
+    """
+    
     def get(self):
         aggregator = Aggregator()
         aggregator.scan_sources()
 
-        
+class FlushLinksTask(webapp.RequestHandler):
+    """
+    Flushes expired links from the datastore
+    """
+    
+    def get(self):
+        aggregator = Aggregator()
+        aggregator.flush_links()
         
 def main():
-    application = webapp.WSGIApplication([('/', MainHandler), ('/tasks/scan', TaskHandler)],
-                                         debug=True)
+    application = webapp.WSGIApplication([
+                                    ('/', IndexPage),
+                                    ('/task/scan', ScanSourcesTask),
+                                    ('/task/flush', FlushLinksTask)
+                                ], debug=True)
     util.run_wsgi_app(application)
 
 

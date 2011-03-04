@@ -1,10 +1,14 @@
 sources:
 - name: gnat
-  url: http://pipes.yahoo.com/pipes/pipe.run?_id=b5896405bdb116feac4ed791f41498ee&_render=rss&nocache=true
+  feed: http://pipes.yahoo.com/pipes/pipe.run?_id=b5896405bdb116feac4ed791f41498ee&_render=rss&nocache=true
+  name: Gnat
+  homepage: http://radar.oreilly.com/nat/index.html
   influence: 30
-- name: Waxy
-  url: http://waxy.org/links/index.xml
+- feed: http://waxy.org/links/index.xml
+  name: Waxy
+  homepage: http://waxy.org/
   influence: 20
-- name: tecznotes
-  url: http://mike.teczno.com/snippets/xml.php
+- feed: http://mike.teczno.com/snippets/xml.php
+  name: tecznotes
+  homepage: http://mike.teczno.com/
   influence: 30

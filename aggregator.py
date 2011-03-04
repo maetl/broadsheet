@@ -87,17 +87,21 @@ class Aggregator():
     def scan_sources(self):
         sources = self.get_sources()
         for source in sources['sources']:
-            items = self.fetch_feed(source['url'])
-            self.update_source(items)
-    
-    def update_source(self, items):
-        for item in items:
-            link = db.GqlQuery("SELECT * FROM Link WHERE url = :1", item['url']).get()
-            if not link:
-                link = Link()
-                link.title = item['title']
-                link.url = item['url']
-                link.summary = item['summary']
-                link.updated = item['updated']
-                link.put()
+            items = self.fetch_feed(source['feed'])
+            for item in items:
+                link = db.GqlQuery("SELECT * FROM Link WHERE href = :1", item['url']).get()
+                if not link:
+                    link = Link()
+                    link.title = item['title']
+                    link.url = item['url']
+                    link.summary = item['summary']
+                    link.updated = item['updated']
+                    link.weight = source['influence']
+                    link.source = source['name']
+                    link.source_href = source['homepage']
+                    link.put()
             
+    def flush_links(self):
+        links = Link.all()
+        for link in links:
+            link.delete()
