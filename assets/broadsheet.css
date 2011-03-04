@@ -1,4 +1,143 @@
-@import url(broadsheet.reset.css);
-@import url(broadsheet.grid.css);
-@import url(broadsheet.typography.css);
-@import url(broadsheet.header.css);
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0b1 | 201101 
+   NOTE: WORK IN PROGRESS
+   USE WITH CAUTION AND TEST WITH ABANDON */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* remember to define visible focus styles! 
+:focus {
+	outline: ?????;
+} */
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.layout {
+  margin: 0 auto;
+  width: 1008px; }
+
+.layout:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+.content {
+  margin-top: 18px;
+  margin-bottom: 18px; }
+
+.col {
+  float: left;
+  margin-left: 9px;
+  margin-right: 9px;
+  margin-bottom: 18px; }
+
+.col-4 {
+  width: 990px; }
+
+.col-2 {
+  width: 477px; }
+
+.col-1 {
+  width: 232px; }
+
+body {
+  font-family: "Arvo",Georgia,serif;
+  font-size: 12px;
+  line-height: 18px; }
+
+a {
+  text-decoration: none; }
+
+h1 {
+  font-size: 56px;
+  font-family: Georgia,serif;
+  letter-spacing: -2px; }
+
+.col-1 h2 {
+  font-size: 14px;
+  line-height: 18px; }
+
+.col-2 h2 {
+  font-size: 24px;
+  line-height: 36px; }
+
+.col-3 h2, .col-4 h2 {
+  font-size: 36px;
+  line-height: 48px; }
+
+em, i {
+  font-style: italic; }
+
+.header {
+  width: 100%;
+  text-align: center;
+  padding: 18px;
+  margin-bottom: 18px; }
+
+.header h1 {
+  line-height: 56px; }
+
+body {
+  background-color: #eee;
+  color: #432C35; }
+
+.header {
+  border-bottom: 3px solid #eee; }
+
+.layout {
+  background-color: #fff; }
+
+a {
+  color: #EC2A04; }
+
+a:hover {
+  color: #50202D; }
+
+a:visited {
+  color: #861B25; }
