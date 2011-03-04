@@ -1,9 +1,10 @@
 #!/usr/bin/env python
-# == Part of More Short Links ==
+# ========================================================================
+# Broadsheet -- an automated personal newspaper
 # 
-# Copyright Mark Rickerby <http://maetl.net>, 2011
+# Copyright (c) 2011, Mark Rickerby <http://maetl.net>
 #
-# # Licensed under the Apache License, Version 2.0 (the "License");
+# Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
@@ -19,7 +20,7 @@ from google.appengine.ext import db
 
 class Link(db.Model):
     title           = db.StringProperty()
-    url             = db.StringProperty()
+    url             = db.LinkProperty()
     summary         = db.TextProperty()
     published_at    = db.DateTimeProperty()
     weight          = db.IntegerProperty()

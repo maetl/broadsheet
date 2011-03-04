@@ -1,5 +1,5 @@
-More Short Links
-================
+Broadsheet
+==========
 
 Mostly, I wanted a clean, fun interface for checking the latest from my favorite short-form linkblogs. I got tired of sloughing through the whack-a-mole dreck in RSS readers just to get at an interesting flow of links. I wanted an interface
 
