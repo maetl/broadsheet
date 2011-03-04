@@ -2,6 +2,9 @@ cron:
 - description: scan sources for new links
   url: /tasks/scan
   schedule: every 25 minutes
+- description: update tweetcount for existing links
+  url: /tasks/rankings
+  schedule: every 3 hours
 - description: flush expired links
   url: /tasks/flush
   schedule: every monday 09:00

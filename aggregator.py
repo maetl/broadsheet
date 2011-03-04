@@ -22,6 +22,7 @@ import datetime
 import calendar
 from google.appengine.ext import db
 from google.appengine.api import urlfetch
+from django.utils import simplejson as json
 from xml.dom import minidom
 from model import *
 
@@ -85,8 +86,8 @@ class Aggregator():
         return items
         
     def scan_sources(self):
-        sources = self.get_sources()
-        for source in sources['sources']:
+        config = self.get_sources()
+        for source in config['sources']:
             items = self.fetch_feed(source['feed'])
             for item in items:
                 link = db.GqlQuery("SELECT * FROM Link WHERE href = :1", item['href']).get()
@@ -101,6 +102,19 @@ class Aggregator():
                     link.source_href = source['homepage']
                     link.put()
             
+    def calculate_rankings(self):
+        config = self.get_sources()
+        links = Link.all()
+        for link in links:
+            api_key = config['aggregator']['backtype_api_key']
+            url = "http://api.backtype.com/tweetcount.json?q=%s&key=%s" % (link.href, api_key)
+            response = urlfetch.fetch(url)
+            if response.status_code == 200:
+                result = json.loads(response.content)
+                link.tweets = result['tweetcount']
+                link.put()
+                
+    
     def flush_links(self):
         links = Link.all()
         for link in links:

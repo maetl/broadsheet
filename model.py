@@ -37,4 +37,4 @@ class Link(db.Model):
     
     @classmethod
     def headlines(self):
-        return self.all().order('-updated').fetch(32)
+        return self.all().order('-tweets').fetch(32)

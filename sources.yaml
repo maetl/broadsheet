@@ -12,3 +12,7 @@ sources:
   name: tecznotes
   homepage: http://mike.teczno.com/
   influence: 30
+
+aggregator:
+  backtype_api_key: e2e2e2e2e2e2e2e2e2e2
+  
