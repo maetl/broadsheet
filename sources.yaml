@@ -1,10 +1,10 @@
 sources:
 - name: gnat
-  url: http://pipes.yahoo.com/pipes/pipe.run?_id=b5896405bdb116feac4ed791f41498ee&_render=json
-  format: JSON
+  url: http://pipes.yahoo.com/pipes/pipe.run?_id=b5896405bdb116feac4ed791f41498ee&_render=rss&nocache=true
+  influence: 30
 - name: Waxy
   url: http://waxy.org/links/index.xml
-  format: RSS
+  influence: 20
 - name: tecznotes
   url: http://mike.teczno.com/snippets/xml.php
-  format: RSS
+  influence: 30
