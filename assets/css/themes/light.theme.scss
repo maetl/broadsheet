@@ -7,6 +7,10 @@ body {
     border-bottom:3px solid #eee;
 }
 
+.footer {
+    border-top:3px solid #eee;
+}
+
 .layout {
     background-color:#fff;
 }
@@ -21,4 +25,9 @@ a:hover {
 
 a:visited {
     color:#861B25;
+}
+
+.footer a {
+    color:#432C35;
+    border-bottom:1px solid #432C35;
 }

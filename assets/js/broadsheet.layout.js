@@ -1,3 +1,5 @@
 $(window).load(function(){
-  $('.content').masonry();
+  $('.content').masonry({
+      columnWidth: 252
+  });
 });
