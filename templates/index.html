@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>More Short Links</title>
+	<title>Broadsheet</title>
+	<link href="http://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" type="text/css">	
+	<link rel="stylesheet" media="screen" type="text/css" href="/assets/css/broadsheet.reset.css">	
+	<link rel="stylesheet" media="screen" type="text/css" href="/assets/css/broadsheet.grid.css">
+	<link rel="stylesheet" media="screen" type="text/css" href="/assets/css/broadsheet.header.css">	
+	<link rel="stylesheet" media="screen" type="text/css" href="/assets/css/broadsheet.typography.css">
+	<script type="text/javascript" src="/assets/js/jquery.base.js"></script>	
+	<script type="text/javascript" src="/assets/js/jquery.masonry.js"></script>
+	<script type="text/javascript" src="/assets/js/broadsheet.layout.js"></script>
 </head>
 <body>
-	<h1>More Short Links</h1>
-	
+  <div class="layout">
+	<div class="header">
+		<h1>Broadsheet</h1>
+	</div>
+	<div class="content">
 	{% for link in links %}
 	
-		<div class="entry">
-			<h3><a href="{{ link.url }}">{{ link.title }}</a></h3>
+		<div class="col col-2">
+			<h2><a href="{{ link.url }}">{{ link.title }}</a></h2>
 			<div class="summary">
-				{{ link.summary }}
+				<p>{{ link.summary|capfirst|removetags:"img" }}</p>
 			</div>
 		</div>
 	
 	{% endfor %}
-	
+	</div>	
+  </div>
 </body>
 </html>
