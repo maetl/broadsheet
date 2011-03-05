@@ -23,6 +23,8 @@ from google.appengine.ext.webapp import template
 from model import *
 from aggregator import *
 
+webapp.template.register_template_library('filters')
+
 class IndexPage(webapp.RequestHandler):
     """
     Displays the HTML newspaper index
