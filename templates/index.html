@@ -18,8 +18,8 @@
 	  {% for link in links %}
 		<div class="col {{ link.col }}">
 			<h2><a href="{{ link.href }}">{{ link.title }}</a></h2>
+			<p class="posted">Posted {{ link.updated|since }} at <span class="source"><a href="{{ link.source_href }}">{{ link.source }}</a></span></p>			
 			<p class="summary">{{ link.summary|capfirst|removetags:"img p" }}</p>
-			<p class="posted">Posted {{ link.updated|since }} at <span class="source"><a href="{{ link.source_href }}">{{ link.source }}</a></span></p>
 		</div>
 	  {% endfor %}
 	{% else %}
