@@ -56,9 +56,10 @@ You’re intrigued by this and are wondering how to customize the layout
 
 The single HTML template that does everything is <code>/templates/index.html</code>.
 
-All Stylesheets and Javascript assets are contained in the <code>/assets</code> folder. Stylesheets are built using the Sass tool which you’ll need to install via Rubygems:
+All Stylesheets and Javascript assets are contained in the <code>/assets</code> folder. Stylesheets are built using the Sass and Packr tools which you’ll need to install via Rubygems:
 
-<pre>gem install sass</pre>
+<pre>$ gem install sass
+$ gem install packr</pre>
 
 To add a new theme, simply duplicate one of the existing files in the <code>/assets/css/themes</code> folder and change the CSS properties as you like.
 
@@ -68,6 +69,10 @@ Link to the new theme by renaming the following line in <code>/assets/css/broads
 
 Then compile the assets into the master CSS file using Sass. You’ll probably want to use the <code>-t</code> flag to compress whitespace and remove other general cruft:
 
-<pre>sass -t compressed assets/css/broadsheet.scss assets/broadsheet.css</pre>
+<pre>$ sass -t compressed assets/css/broadsheet.scss assets/broadsheet.css</pre>
+
+Compressing the Javascript assets is similar. Currently the only library used is JQuery Masonry, which rejigs the floating layout to avoid the columns bunching awkwardly:
+
+<pre>$ packr assets/js/jquery.masonry.js assets/js/broadsheet.layout.js > assets/broadsheet.js</pre>
 
 Kapow! You now have your very own personalized newspaper. Enjoy.
