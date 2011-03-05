@@ -44,6 +44,15 @@ class ScanSourcesTask(webapp.RequestHandler):
         aggregator = Aggregator()
         aggregator.scan_sources()
 
+class LinkRankingsTask(webapp.RequestHandler):
+    """
+    Refreshes link weightings based on Twitter popularity
+    """
+    
+    def get(self):
+        aggregator = Aggregator()
+        aggregator.calculate_rankings()
+
 class FlushLinksTask(webapp.RequestHandler):
     """
     Flushes expired links from the datastore
@@ -57,6 +66,7 @@ def main():
     application = webapp.WSGIApplication([
                                     ('/', IndexPage),
                                     ('/task/scan', ScanSourcesTask),
+                                    ('/task/rankings', LinkRankingsTask),
                                     ('/task/flush', FlushLinksTask)
                                 ], debug=True)
     util.run_wsgi_app(application)
