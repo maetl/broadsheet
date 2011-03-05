@@ -23,7 +23,7 @@ Clone this repository into a local folder and use “Add Existing Application”
 
 Edit the following line in the <code>app.yaml</code> to register a unique App Engine site:
 
-<pre>application: broadsheet</pre>
+<pre>application: yourappname</pre>
 
 To configure the list of sources, you’ll want to edit the <code>sources.yaml</code> config:
 
