@@ -4,9 +4,8 @@
 	<title>Broadsheet</title>
 	<link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css">	
 	<link rel="stylesheet" media="screen" type="text/css" href="/assets/broadsheet.css">
-	<script type="text/javascript" src="/assets/js/jquery.base.js"></script>	
-	<script type="text/javascript" src="/assets/js/jquery.masonry.js"></script>
-	<script type="text/javascript" src="/assets/js/broadsheet.layout.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>	
+	<script type="text/javascript" src="/assets/broadsheet.js"></script>
 </head>
 <body>
   <div class="layout">
@@ -19,7 +18,8 @@
 	  {% for link in links %}
 		<div class="col {{ link.col }}">
 			<h2><a href="{{ link.href }}">{{ link.title }}</a></h2>
-			<p>{{ link.summary|capfirst|removetags:"img p" }} <span class="source"><a href="{{ link.source_href }}">{{ link.source }}</a></span></p>
+			<p class="summary">{{ link.summary|capfirst|removetags:"img p" }}</p>
+			<p class="posted">Posted {{ link.updated|since }} at <span class="source"><a href="{{ link.source_href }}">{{ link.source }}</a></span></p>
 		</div>
 	  {% endfor %}
 	{% else %}
