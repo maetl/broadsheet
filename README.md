@@ -12,7 +12,7 @@ My initial prototype ran on Heroku, but I demolished that because I was too tigh
 You’re mostly interested in the links
 -------------------------------------
 
-See a live version of the app: http://moreshortlinks.appspot.com/
+See a live version of the app: [http://moreshortlinks.appspot.com/](http://moreshortlinks.appspot.com/)
 
 You’re mostly interested in how you can make your own newspaper
 ---------------------------------------------------------------
