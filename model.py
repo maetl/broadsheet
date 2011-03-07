@@ -16,7 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import yaml
 from google.appengine.ext import db
+from django.utils import simplejson as json
+from datetime import datetime, timedelta
 
 class Link(db.Model):
     title           = db.StringProperty()
@@ -38,3 +41,10 @@ class Link(db.Model):
     @classmethod
     def headlines(self):
         return self.all().order('-tweets').fetch(32)
+    
+    @classmethod
+    def expired(self):
+        config = yaml.load(open('sources.yaml', 'r').read())
+        value, interval = config['aggregator']['expire_after'].split(' ')
+        expiry_date = datetime.now() - timedelta(**{ interval : int(value) })
+        return self.all().filter('updated <=', expiry_date)
