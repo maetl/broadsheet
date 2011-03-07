@@ -12,7 +12,13 @@ sources:
   name: tecznotes
   homepage: http://mike.teczno.com/
   influence: 30
+#- feed: http://feeds.feedburner.com/Tputh
+#  name: TPUTH
+#  homepage: http://www.tputh.com/
+#  influence: 20
+# pubDate is broken in TPUTH feed
 
 aggregator:
   backtype_api_key: e2e2e2e2e2e2e2e2e2e2
+  expire_after: 15 days
   
