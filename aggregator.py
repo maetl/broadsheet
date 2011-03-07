@@ -116,6 +116,5 @@ class Aggregator():
                 
     
     def flush_links(self):
-        links = Link.all()
-        for link in links:
+        for link in Link.expired():
             link.delete()
