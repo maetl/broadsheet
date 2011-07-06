@@ -1,5 +1,8 @@
 $(window).load(function(){
-  $('.content').masonry({
-      columnWidth: 252
+  
+  $('.content').isotope({
+     itemSelector: '.col',
+     layoutMode: 'fitRows' 
   });
+  
 });
